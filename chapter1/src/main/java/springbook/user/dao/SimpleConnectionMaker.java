@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class NUserDao extends UserDao{
+public class SimpleConnectionMaker {
 
-    public Connection getConnection() throws ClassNotFoundException, SQLException {
-        // N사 DB connection 생성 코드
+    public Connection makeNewConnection() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
         Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/toby", "postgres", "");
 
