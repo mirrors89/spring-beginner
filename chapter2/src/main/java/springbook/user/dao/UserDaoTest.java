@@ -13,10 +13,13 @@ import java.sql.SQLException;
 
 public class UserDaoTest {
     @Test
-    public void addAndGet() throws SQLException, ClassNotFoundException {
+    public void addAndGet() throws SQLException {
         ApplicationContext context = new GenericXmlApplicationContext("applicationContext.xml");
 
         UserDao dao = context.getBean("userDao", UserDao.class);
+
+        dao.allDelete();
+        assertThat(dao.getCount(), is(0));
 
         User user = new User();
         user.setId("mirror");
@@ -24,8 +27,7 @@ public class UserDaoTest {
         user.setPassword("password");
 
         dao.add(user);
-
-        System.out.println(user.getId() + " 등록 성공");
+        assertThat(dao.getCount(), is(1));
 
         User user2 = dao.get(user.getId());
 
