@@ -23,7 +23,7 @@ public class DaoFactory {
         dataSource.setDriverClass(org.postgresql.Driver.class);
         dataSource.setUrl("jdbc:postgresql://localhost:5432/toby");
         dataSource.setUsername("postgres");
-        dataSource.setPassword("dlrltmd1!");
+        dataSource.setPassword("");
 
         return dataSource;
     }
